@@ -12,15 +12,15 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/books/1",
+      "launchUrl": "",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
     "OnlineBookShop.API": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "api/books/1",
+      "launchBrowser": false,
+      "launchUrl": "",
       "applicationUrl": "http://localhost:25001",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"

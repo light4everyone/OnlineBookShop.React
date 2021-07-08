@@ -47,6 +47,8 @@ namespace OnlineBookShop.API
 
             services.AddScoped<IRepository, EFCoreRepository>();
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -60,6 +62,13 @@ namespace OnlineBookShop.API
             {
                 app.UseMiddleware<ErrorHandlingMiddleware>();
             }
+
+            app.UseSwagger();
+
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Online Book Shop Api");
+            });
 
             app.UseRouting();
 
