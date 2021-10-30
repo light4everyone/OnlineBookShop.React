@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineBookShop.API.Dtos.Publishers;
 using OnlineBookShop.API.Repositories.Interfaces;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace OnlineBookShop.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class PublishersController : ControllerBase
     {
@@ -22,7 +24,7 @@ namespace OnlineBookShop.API.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAllPublishers()
+        public async Task<ActionResult<List<PublisherDto>>> GetAllPublishers()
         {
             var publisherList = await _repository.GetAll<Publisher>();
             var publisherDtoList = _mapper.Map<List<PublisherDto>>(publisherList);

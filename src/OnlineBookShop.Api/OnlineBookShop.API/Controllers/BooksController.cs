@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using OnlineBookShop.API.Dtos.Books;
 using OnlineBookShop.API.Infrastructure.Models;
@@ -9,6 +10,7 @@ using System.Threading.Tasks;
 namespace OnlineBookShop.API.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class BooksController : ControllerBase
     {
@@ -22,14 +24,14 @@ namespace OnlineBookShop.API.Controllers
         }
 
         [HttpPost("PaginatedSearch")]
-        public async Task<IActionResult> GetPagedBooks([FromBody]PagedRequest pagedRequest)
+        public async Task<ActionResult<PaginatedResult<BookGridRowDto>>> GetPagedBooks([FromBody]PagedRequest pagedRequest)
         {
             var pagedBooksDto = await _repository.GetPagedData<Book, BookGridRowDto>(pagedRequest);
             return Ok(pagedBooksDto);  
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetBook(int id)
+        public async Task<ActionResult<BookDto>> GetBook(int id)
         {
             var book = await _repository.GetByIdWithInclude<Book>(id, book => book.Publisher);
             var bookDto = _mapper.Map<BookDto>(book);
@@ -37,7 +39,7 @@ namespace OnlineBookShop.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateBook(BookForUpdateDto bookForUpdateDto)
+        public async Task<ActionResult<BookDto>> CreateBook(BookForUpdateDto bookForUpdateDto)
         {
             var book = _mapper.Map<Book>(bookForUpdateDto);
             await _repository.Add<Book>(book);

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using OnlineBookShop.API.Configuration;
 using Microsoft.Extensions.Configuration;
 
@@ -16,19 +15,8 @@ namespace OnlineBookShop.API.Infrastructure.Extensions
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = authOptions.Issuer,
-
-                    ValidateAudience = true,
-                    ValidAudience = authOptions.Audience,
-
-                    ValidateLifetime = true,
-
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = authOptions.GetSymmetricSecurityKey(),
-                };
+                options.Authority = authOptions.Authority;
+                options.Audience = authOptions.Audience;
             });
         }
 

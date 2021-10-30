@@ -1,0 +1,16 @@
+.openapi-generator-ignore
+apis/BooksApi.ts
+apis/PublishersApi.ts
+apis/index.ts
+index.ts
+models/BookDto.ts
+models/BookForUpdateDto.ts
+models/BookGridRowDto.ts
+models/BookGridRowDtoPaginatedResult.ts
+models/Filter.ts
+models/FilterLogicalOperators.ts
+models/PagedRequest.ts
+models/PublisherDto.ts
+models/RequestFilters.ts
+models/index.ts
+runtime.ts
