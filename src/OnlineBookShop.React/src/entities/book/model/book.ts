@@ -1,8 +1,8 @@
 import { createEffect, createEvent, createStore, forward, sample } from 'effector';
 import { useStore } from 'effector-react';
 import { spread } from 'patronum';
-import { BookGridRowDto, booksApi, PagedRequest, BookForUpdateDto } from 'shared/api';
-import { history } from 'shared/lib/history';
+import { BookGridRowDto, booksApi, PagedRequest, BookForUpdateDto } from '../../../shared/api';
+import { history } from '../../../shared/lib/history';
 
 const clearBooksList = createEvent();
 

@@ -1,19 +1,19 @@
 import { combine, createEffect, forward, guard, restore, sample } from 'effector';
-import { authClient } from 'shared/lib/auth';
-import { $appMounted } from 'shared/lib/app-gate';
+import { authClient } from '../../../shared/lib/auth';
+import { $appMounted } from '../../../shared/lib/app-gate';
 import { hasAuthParams } from '../lib';
-import { history } from 'shared/lib/history';
-import { userModel } from 'entities/user';
+import { history } from '../../../shared/lib/history';
+import { userModel } from '../../../entities/user';
 import { User } from '@auth0/auth0-spa-js';
-
 
 const initAuthFx = createEffect(async () => {
 	if (hasAuthParams()) {
 		await authClient.handleRedirectCallback();
-
+    
 		history.replace({
 			search: ''
 		});
+		
 	} else {
 		if (await authClient.isAuthenticated()) {
 			await authClient.checkSession();

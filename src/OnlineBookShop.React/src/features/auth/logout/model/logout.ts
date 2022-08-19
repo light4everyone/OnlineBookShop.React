@@ -1,5 +1,5 @@
 import { createEffect, createEvent, forward } from 'effector';
-import { authClient } from 'shared/lib/auth';
+import { authClient } from '../../../../shared/lib/auth';
 
 const logoutButtonPressed = createEvent();
 

@@ -17,19 +17,8 @@ namespace OnlineBookShop.API.Infrastructure.Extensions
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             }).AddJwtBearer(options =>
             {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidIssuer = authOptions.Issuer,
-
-                    ValidateAudience = true,
-                    ValidAudience = authOptions.Audience,
-
-                    ValidateLifetime = true,
-
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = authOptions.GetSymmetricSecurityKey(),
-                };
+                options.Authority = authOptions.Authority;
+                options.Audience = authOptions.Audience;
             });
         }
 

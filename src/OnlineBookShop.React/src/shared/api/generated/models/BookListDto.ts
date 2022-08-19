@@ -16,52 +16,61 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface BookGridRowDto
+ * @interface BookListDto
  */
-export interface BookGridRowDto {
+export interface BookListDto {
     /**
      * 
      * @type {number}
-     * @memberof BookGridRowDto
+     * @memberof BookListDto
      */
     id?: number;
     /**
      * 
      * @type {string}
-     * @memberof BookGridRowDto
+     * @memberof BookListDto
      */
     title?: string | null;
     /**
      * 
      * @type {string}
-     * @memberof BookGridRowDto
+     * @memberof BookListDto
      */
     description?: string | null;
     /**
      * 
      * @type {Date}
-     * @memberof BookGridRowDto
+     * @memberof BookListDto
      */
     publishedOn?: Date;
     /**
      * 
      * @type {string}
-     * @memberof BookGridRowDto
+     * @memberof BookListDto
      */
     publisher?: string | null;
     /**
      * 
      * @type {number}
-     * @memberof BookGridRowDto
+     * @memberof BookListDto
      */
     price?: number;
 }
 
-export function BookGridRowDtoFromJSON(json: any): BookGridRowDto {
-    return BookGridRowDtoFromJSONTyped(json, false);
+/**
+ * Check if a given object implements the BookListDto interface.
+ */
+export function instanceOfBookListDto(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
-export function BookGridRowDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): BookGridRowDto {
+export function BookListDtoFromJSON(json: any): BookListDto {
+    return BookListDtoFromJSONTyped(json, false);
+}
+
+export function BookListDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): BookListDto {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -76,7 +85,7 @@ export function BookGridRowDtoFromJSONTyped(json: any, ignoreDiscriminator: bool
     };
 }
 
-export function BookGridRowDtoToJSON(value?: BookGridRowDto | null): any {
+export function BookListDtoToJSON(value?: BookListDto | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -93,5 +102,4 @@ export function BookGridRowDtoToJSON(value?: BookGridRowDto | null): any {
         'price': value.price,
     };
 }
-
 

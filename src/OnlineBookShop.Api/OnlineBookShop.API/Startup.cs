@@ -32,12 +32,6 @@ namespace OnlineBookShop.API
                 optionBuilder.UseSqlServer(Configuration.GetConnectionString("OnlineBookShopConnection"));
             });
 
-            services.AddIdentity<User, Role>(options => 
-            {
-                options.Password.RequiredLength = 8;
-            })
-            .AddEntityFrameworkStores<OnlineBookShopDbContext>();
-
             var authOptions = services.ConfigureAuthOptions(Configuration);
             services.AddJwtAuthentication(authOptions);
             services.AddControllers();

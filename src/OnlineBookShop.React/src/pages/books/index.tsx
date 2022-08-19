@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { bookModel } from 'entities/book';
+import { bookModel } from '../../entities/book';
 import { forward } from 'effector';
 import { createGate, useGate } from 'effector-react';
 import { useMemo } from 'react';
@@ -42,7 +42,7 @@ const Books = () => {
 
 	useGate(pageGate);
 
-	const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement, MouseEvent>, newPage: number) => {
+	const handleChangePage = (_event: React.MouseEvent<HTMLButtonElement, MouseEvent> | null, newPage: number) => {
 		bookModel.events.setPage(newPage);
 	};
 
@@ -120,12 +120,12 @@ const Books = () => {
 									<TableCell align="right">{row.publisher}</TableCell>
 									<TableCell align="right">
 										{
-											row.publishedOn.toLocaleDateString('en-US', {
+											row.publishedOn!.toLocaleDateString('en-US', {
 												year: 'numeric', month: 'long', day: 'numeric'
 											})
 										}
 									</TableCell>
-									<TableCell align="right">{priceFormatter.format(row.price)}</TableCell>
+									<TableCell align="right">{priceFormatter.format(row.price!)}</TableCell>
 								</TableRow>
 							))
 						}

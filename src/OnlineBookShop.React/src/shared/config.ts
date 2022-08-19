@@ -1,9 +1,9 @@
 export const config = {
-	API_BASE_PATH: process.env.REACT_APP_API_BASE_PATH,
+	API_BASE_PATH: import.meta.env.VITE_API_BASE_PATH,
 	AUTH: {
-		API_AUDIENCE: process.env.REACT_APP_AUTH_AUDIENCE,
-		REDIRECT_URI: process.env.REACT_APP_AUTH_REDIRECT_URI,
-		AUTH_DOMAIN: process.env.REACT_APP_AUTH_DOMAIN,
-		CLIENT_ID: process.env.REACT_APP_AUTH_CLIENT_ID
+		API_AUDIENCE: import.meta.env.VITE_AUTH_AUDIENCE,
+		REDIRECT_URI: import.meta.env.VITE_AUTH_REDIRECT_URI,
+		AUTH_DOMAIN: import.meta.env.VITE_AUTH_DOMAIN,
+		CLIENT_ID: import.meta.env.VITE_AUTH_CLIENT_ID
 	}
 }

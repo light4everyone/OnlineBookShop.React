@@ -12,15 +12,17 @@
  * Do not edit the class manually.
  */
 
+
 /**
  * 
  * @export
- * @enum {string}
  */
-export enum FilterLogicalOperators {
-    NUMBER_0 = 0,
-    NUMBER_1 = 1
-}
+export const FilterLogicalOperators = {
+    NUMBER_0: 0,
+    NUMBER_1: 1
+} as const;
+export type FilterLogicalOperators = typeof FilterLogicalOperators[keyof typeof FilterLogicalOperators];
+
 
 export function FilterLogicalOperatorsFromJSON(json: any): FilterLogicalOperators {
     return FilterLogicalOperatorsFromJSONTyped(json, false);

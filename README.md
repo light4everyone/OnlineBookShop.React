@@ -1,0 +1,4 @@
+# Auth
+
+email: admin@example.com
+password: Admin123

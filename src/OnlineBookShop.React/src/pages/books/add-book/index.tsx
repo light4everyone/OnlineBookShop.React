@@ -1,11 +1,11 @@
 import { Grid, TextField, Select, MenuItem, Button } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import DatePicker from '@mui/lab/DatePicker';
-import { BookForUpdateDto } from 'shared/api';
-import { publishModel } from 'entities/publish';
+import { BookForUpdateDto } from '../../../shared/api';
+import { publishModel } from '../../../entities/publish';
 import { createGate, useGate } from 'effector-react';
 import { forward } from 'effector';
-import { bookModel } from 'entities/book';
+import { bookModel } from '../../../entities/book';
 
 
 const pageGate = createGate();
@@ -97,7 +97,7 @@ const AddBook = () => {
             render={({ field }) => (
               <DatePicker
                 {...field}
-                renderInput={(params) => <TextField {...params} />}
+                renderInput={(params: any) => <TextField {...params} />}
               />
             )}
           />

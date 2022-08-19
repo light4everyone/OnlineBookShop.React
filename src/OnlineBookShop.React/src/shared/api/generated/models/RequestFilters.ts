@@ -13,16 +13,18 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { Filter } from './Filter';
 import {
-    Filter,
     FilterFromJSON,
     FilterFromJSONTyped,
     FilterToJSON,
-    FilterLogicalOperators,
+} from './Filter';
+import type { FilterLogicalOperators } from './FilterLogicalOperators';
+import {
     FilterLogicalOperatorsFromJSON,
     FilterLogicalOperatorsFromJSONTyped,
     FilterLogicalOperatorsToJSON,
-} from './';
+} from './FilterLogicalOperators';
 
 /**
  * 
@@ -42,6 +44,15 @@ export interface RequestFilters {
      * @memberof RequestFilters
      */
     filters?: Array<Filter> | null;
+}
+
+/**
+ * Check if a given object implements the RequestFilters interface.
+ */
+export function instanceOfRequestFilters(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
 export function RequestFiltersFromJSON(json: any): RequestFilters {
@@ -72,5 +83,4 @@ export function RequestFiltersToJSON(value?: RequestFilters | null): any {
         'filters': value.filters === undefined ? undefined : (value.filters === null ? null : (value.filters as Array<any>).map(FilterToJSON)),
     };
 }
-
 

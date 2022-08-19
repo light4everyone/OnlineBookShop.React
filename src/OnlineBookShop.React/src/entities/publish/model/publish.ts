@@ -1,6 +1,6 @@
 import { createEffect, createStore, createEvent, forward } from 'effector';
 import { useStore } from 'effector-react';
-import { PublisherDto, publishersApi } from 'shared/api';
+import { PublisherDto, publishersApi } from '../../../shared/api';
 
 const getPublishers = createEvent();
 

@@ -21,7 +21,6 @@ namespace OnlineBookShop.API.Infrastructure.Extensions
                 try
                 {
                     var context = services.GetRequiredService<OnlineBookShopDbContext>();
-                    var userManager = services.GetRequiredService<UserManager<User>>();
                     context.Database.Migrate();
 
                     await PublishersSeed.Seed(context);

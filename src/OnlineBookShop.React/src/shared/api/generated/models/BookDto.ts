@@ -57,6 +57,15 @@ export interface BookDto {
     price?: number;
 }
 
+/**
+ * Check if a given object implements the BookDto interface.
+ */
+export function instanceOfBookDto(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function BookDtoFromJSON(json: any): BookDto {
     return BookDtoFromJSONTyped(json, false);
 }
@@ -93,5 +102,4 @@ export function BookDtoToJSON(value?: BookDto | null): any {
         'price': value.price,
     };
 }
-
 

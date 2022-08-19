@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { LoginButton } from 'features/auth/login';
+import { LoginButton } from '../../features/auth/login';
 
 const FullScreanContainer = styled('div')(({theme}) => ({
 	position: 'fixed',

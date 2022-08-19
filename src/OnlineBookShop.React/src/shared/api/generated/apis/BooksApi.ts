@@ -14,17 +14,19 @@
 
 
 import * as runtime from '../runtime';
+import type {
+  BookDto,
+  BookForUpdateDto,
+  BookListDtoPaginatedResult,
+  PagedRequest,
+} from '../models';
 import {
-    BookDto,
     BookDtoFromJSON,
     BookDtoToJSON,
-    BookForUpdateDto,
     BookForUpdateDtoFromJSON,
     BookForUpdateDtoToJSON,
-    BookGridRowDtoPaginatedResult,
-    BookGridRowDtoPaginatedResultFromJSON,
-    BookGridRowDtoPaginatedResultToJSON,
-    PagedRequest,
+    BookListDtoPaginatedResultFromJSON,
+    BookListDtoPaginatedResultToJSON,
     PagedRequestFromJSON,
     PagedRequestToJSON,
 } from '../models';
@@ -57,7 +59,7 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdDeleteRaw(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async apiBooksIdDeleteRaw(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiBooksIdDelete.');
         }
@@ -66,8 +68,16 @@ export class BooksApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
-            path: `/api/Books/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/books/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'DELETE',
             headers: headerParameters,
             query: queryParameters,
@@ -78,13 +88,13 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdDelete(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit): Promise<void> {
+    async apiBooksIdDelete(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.apiBooksIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiBooksIdGetRaw(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BookDto>> {
+    async apiBooksIdGetRaw(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookDto>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiBooksIdGet.');
         }
@@ -93,8 +103,16 @@ export class BooksApi extends runtime.BaseAPI {
 
         const headerParameters: runtime.HTTPHeaders = {};
 
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
-            path: `/api/Books/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/books/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'GET',
             headers: headerParameters,
             query: queryParameters,
@@ -105,14 +123,14 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdGet(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit): Promise<BookDto> {
+    async apiBooksIdGet(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookDto> {
         const response = await this.apiBooksIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiBooksIdPutRaw(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<void>> {
+    async apiBooksIdPutRaw(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiBooksIdPut.');
         }
@@ -123,8 +141,16 @@ export class BooksApi extends runtime.BaseAPI {
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
-            path: `/api/Books/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
+            path: `/api/books/{id}`.replace(`{${"id"}}`, encodeURIComponent(String(requestParameters.id))),
             method: 'PUT',
             headers: headerParameters,
             query: queryParameters,
@@ -136,62 +162,77 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdPut(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit): Promise<void> {
+    async apiBooksIdPut(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
         await this.apiBooksIdPutRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiBooksPaginatedSearchPostRaw(requestParameters: ApiBooksPaginatedSearchPostRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BookGridRowDtoPaginatedResult>> {
+    async apiBooksPaginatedSearchPostRaw(requestParameters: ApiBooksPaginatedSearchPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookListDtoPaginatedResult>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
-            path: `/api/Books/PaginatedSearch`,
+            path: `/api/books/paginated-search`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: PagedRequestToJSON(requestParameters.pagedRequest),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => BookGridRowDtoPaginatedResultFromJSON(jsonValue));
+        return new runtime.JSONApiResponse(response, (jsonValue) => BookListDtoPaginatedResultFromJSON(jsonValue));
     }
 
     /**
      */
-    async apiBooksPaginatedSearchPost(requestParameters: ApiBooksPaginatedSearchPostRequest, initOverrides?: RequestInit): Promise<BookGridRowDtoPaginatedResult> {
+    async apiBooksPaginatedSearchPost(requestParameters: ApiBooksPaginatedSearchPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookListDtoPaginatedResult> {
         const response = await this.apiBooksPaginatedSearchPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiBooksPostRaw(requestParameters: ApiBooksPostRequest, initOverrides?: RequestInit): Promise<runtime.ApiResponse<BookDto>> {
+    async apiBooksPostRaw(requestParameters: ApiBooksPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
 
         headerParameters['Content-Type'] = 'application/json';
 
+        if (this.configuration && this.configuration.accessToken) {
+            const token = this.configuration.accessToken;
+            const tokenString = await token("Bearer", []);
+
+            if (tokenString) {
+                headerParameters["Authorization"] = `Bearer ${tokenString}`;
+            }
+        }
         const response = await this.request({
-            path: `/api/Books`,
+            path: `/api/books`,
             method: 'POST',
             headers: headerParameters,
             query: queryParameters,
             body: BookForUpdateDtoToJSON(requestParameters.bookForUpdateDto),
         }, initOverrides);
 
-        return new runtime.JSONApiResponse(response, (jsonValue) => BookDtoFromJSON(jsonValue));
+        return new runtime.VoidApiResponse(response);
     }
 
     /**
      */
-    async apiBooksPost(requestParameters: ApiBooksPostRequest, initOverrides?: RequestInit): Promise<BookDto> {
-        const response = await this.apiBooksPostRaw(requestParameters, initOverrides);
-        return await response.value();
+    async apiBooksPost(requestParameters: ApiBooksPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+        await this.apiBooksPostRaw(requestParameters, initOverrides);
     }
 
 }

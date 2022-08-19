@@ -16,28 +16,37 @@ import { exists, mapValues } from '../runtime';
 /**
  * 
  * @export
- * @interface PublisherDto
+ * @interface PublisherListDto
  */
-export interface PublisherDto {
+export interface PublisherListDto {
     /**
      * 
      * @type {number}
-     * @memberof PublisherDto
+     * @memberof PublisherListDto
      */
     id?: number;
     /**
      * 
      * @type {string}
-     * @memberof PublisherDto
+     * @memberof PublisherListDto
      */
     name?: string | null;
 }
 
-export function PublisherDtoFromJSON(json: any): PublisherDto {
-    return PublisherDtoFromJSONTyped(json, false);
+/**
+ * Check if a given object implements the PublisherListDto interface.
+ */
+export function instanceOfPublisherListDto(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
 }
 
-export function PublisherDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): PublisherDto {
+export function PublisherListDtoFromJSON(json: any): PublisherListDto {
+    return PublisherListDtoFromJSONTyped(json, false);
+}
+
+export function PublisherListDtoFromJSONTyped(json: any, ignoreDiscriminator: boolean): PublisherListDto {
     if ((json === undefined) || (json === null)) {
         return json;
     }
@@ -48,7 +57,7 @@ export function PublisherDtoFromJSONTyped(json: any, ignoreDiscriminator: boolea
     };
 }
 
-export function PublisherDtoToJSON(value?: PublisherDto | null): any {
+export function PublisherListDtoToJSON(value?: PublisherListDto | null): any {
     if (value === undefined) {
         return undefined;
     }
@@ -61,5 +70,4 @@ export function PublisherDtoToJSON(value?: PublisherDto | null): any {
         'name': value.name,
     };
 }
-
 

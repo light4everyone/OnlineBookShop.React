@@ -51,6 +51,19 @@ export interface BookForUpdateDto {
     price: number;
 }
 
+/**
+ * Check if a given object implements the BookForUpdateDto interface.
+ */
+export function instanceOfBookForUpdateDto(value: object): boolean {
+    let isInstance = true;
+    isInstance = isInstance && "title" in value;
+    isInstance = isInstance && "publishedOn" in value;
+    isInstance = isInstance && "publisherId" in value;
+    isInstance = isInstance && "price" in value;
+
+    return isInstance;
+}
+
 export function BookForUpdateDtoFromJSON(json: any): BookForUpdateDto {
     return BookForUpdateDtoFromJSONTyped(json, false);
 }
@@ -85,5 +98,4 @@ export function BookForUpdateDtoToJSON(value?: BookForUpdateDto | null): any {
         'price': value.price,
     };
 }
-
 

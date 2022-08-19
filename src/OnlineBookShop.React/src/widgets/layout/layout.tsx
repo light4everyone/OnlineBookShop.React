@@ -22,8 +22,8 @@ import {
 	Link as RouterLink, LinkProps as RouterLinkProps
 } from 'react-router-dom';
 import { Typography } from '@mui/material';
-import { userModel } from 'entities/user';
-import { logoutModel } from 'features/auth/logout';
+import { userModel } from '../../entities/user';
+import { logoutModel } from '../../features/auth/logout';
 
 
 const drawerWidth = 240;

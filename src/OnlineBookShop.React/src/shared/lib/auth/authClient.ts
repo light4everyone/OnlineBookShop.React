@@ -1,5 +1,5 @@
 import { Auth0Client } from '@auth0/auth0-spa-js';
-import { config } from 'shared/config';
+import { config } from '../../../shared/config';
 
 export const authClient = new Auth0Client({
 	domain: config.AUTH.AUTH_DOMAIN,

@@ -13,12 +13,12 @@
  */
 
 import { exists, mapValues } from '../runtime';
+import type { RequestFilters } from './RequestFilters';
 import {
-    RequestFilters,
     RequestFiltersFromJSON,
     RequestFiltersFromJSONTyped,
     RequestFiltersToJSON,
-} from './';
+} from './RequestFilters';
 
 /**
  * 
@@ -58,6 +58,15 @@ export interface PagedRequest {
     requestFilters?: RequestFilters;
 }
 
+/**
+ * Check if a given object implements the PagedRequest interface.
+ */
+export function instanceOfPagedRequest(value: object): boolean {
+    let isInstance = true;
+
+    return isInstance;
+}
+
 export function PagedRequestFromJSON(json: any): PagedRequest {
     return PagedRequestFromJSONTyped(json, false);
 }
@@ -92,5 +101,4 @@ export function PagedRequestToJSON(value?: PagedRequest | null): any {
         'requestFilters': RequestFiltersToJSON(value.requestFilters),
     };
 }
-
 

@@ -5,12 +5,12 @@ apis/index.ts
 index.ts
 models/BookDto.ts
 models/BookForUpdateDto.ts
-models/BookGridRowDto.ts
-models/BookGridRowDtoPaginatedResult.ts
+models/BookListDto.ts
+models/BookListDtoPaginatedResult.ts
 models/Filter.ts
 models/FilterLogicalOperators.ts
 models/PagedRequest.ts
-models/PublisherDto.ts
+models/PublisherListDto.ts
 models/RequestFilters.ts
 models/index.ts
 runtime.ts

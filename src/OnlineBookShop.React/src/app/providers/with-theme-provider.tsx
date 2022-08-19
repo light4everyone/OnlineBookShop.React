@@ -14,9 +14,9 @@ export const withThemeProvider = (component: () => React.ReactNode) => () => (
 	<>
 		<CssBaseline />
 		<ThemeProvider theme={darkTheme}>
-			<LocalizationProvider dateAdapter={AdapterDateFns}>
+			{/* K<LocalizationProvider dateAdapter={AdapterDateFns}> */}
 				{component()}
-			</LocalizationProvider>
+			{/* // </LocalizationProvider> */}
 		</ThemeProvider>
 	</>
 );
