@@ -21,6 +21,10 @@ const initAuthFx = createEffect(async () => {
 	}
 });
 
+const authFailHandlerFx = createEffect(() => {
+	history.push('/');
+});
+
 const getUserFx = createEffect(async () => {
 	const user = await authClient.getUser();
 	return user;
@@ -37,6 +41,16 @@ forward({
 	from: initAuthFx.done,
 	to: getUserFx
 });
+
+forward({
+	from: [initAuthFx.fail, getUserFx.fail],
+	to: authFailHandlerFx
+})
+
+forward({
+	from: authFailHandlerFx.done,
+	to: userModel.events.setIsLoading.prepend(() => false)
+})
 
 sample({
 	source: guard({
