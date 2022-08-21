@@ -28,4 +28,5 @@ const apiConfiguration = new Configuration({
 export const booksApi = new BooksApi(apiConfiguration);
 export const publishersApi = new PublishersApi(apiConfiguration);
 
+// @typescript:-strictNullChecks
 export * from './generated/models';

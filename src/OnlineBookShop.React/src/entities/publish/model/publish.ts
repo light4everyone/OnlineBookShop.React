@@ -1,6 +1,6 @@
 import { createEffect, createStore, createEvent, forward } from 'effector';
 import { useStore } from 'effector-react';
-import { PublisherDto, publishersApi } from '../../../shared/api';
+import { PublisherListDto, publishersApi } from '../../../shared/api';
 
 const getPublishers = createEvent();
 
@@ -8,7 +8,7 @@ const getPublishersFx = createEffect(() => {
 	return publishersApi.apiPublishersGet();
 });
 
-const $publishers = createStore<PublisherDto[]>([])
+const $publishers = createStore<PublisherListDto[]>([])
 	.on(getPublishersFx.doneData, (_, publishers) => publishers);
 
 

@@ -13,8 +13,8 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { BookListDto } from './BookListDto';
 import {
+    BookListDto,
     BookListDtoFromJSON,
     BookListDtoFromJSONTyped,
     BookListDtoToJSON,
@@ -50,15 +50,6 @@ export interface BookListDtoPaginatedResult {
      * @memberof BookListDtoPaginatedResult
      */
     items?: Array<BookListDto> | null;
-}
-
-/**
- * Check if a given object implements the BookListDtoPaginatedResult interface.
- */
-export function instanceOfBookListDtoPaginatedResult(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
 }
 
 export function BookListDtoPaginatedResultFromJSON(json: any): BookListDtoPaginatedResult {

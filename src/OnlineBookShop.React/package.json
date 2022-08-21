@@ -7,7 +7,7 @@
     "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "generate-api": "rimraf src/shared/api/generated && openapi-generator-cli generate -i http://localhost:25001/swagger/v1/swagger.json --generator-name typescript-fetch --additional-properties=typescriptThreePlus=true -o src/shared/api/generated"
+    "generate-api": "rimraf src/shared/api/generated && openapi-generator-cli version-manager set 6.0.0 && openapi-generator-cli generate -i http://localhost:25001/swagger/v1/swagger.json --generator-name typescript-fetch -o src/shared/api/generated"
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.19.2",

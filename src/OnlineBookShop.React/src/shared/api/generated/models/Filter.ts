@@ -33,15 +33,6 @@ export interface Filter {
     value?: string | null;
 }
 
-/**
- * Check if a given object implements the Filter interface.
- */
-export function instanceOfFilter(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
-}
-
 export function FilterFromJSON(json: any): Filter {
     return FilterFromJSONTyped(json, false);
 }

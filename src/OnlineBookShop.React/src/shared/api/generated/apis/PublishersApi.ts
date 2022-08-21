@@ -14,10 +14,8 @@
 
 
 import * as runtime from '../runtime';
-import type {
-  PublisherListDto,
-} from '../models';
 import {
+    PublisherListDto,
     PublisherListDtoFromJSON,
     PublisherListDtoToJSON,
 } from '../models';
@@ -29,7 +27,7 @@ export class PublishersApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiPublishersGetRaw(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<Array<PublisherListDto>>> {
+    async apiPublishersGetRaw(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<Array<PublisherListDto>>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -54,7 +52,7 @@ export class PublishersApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiPublishersGet(initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<Array<PublisherListDto>> {
+    async apiPublishersGet(initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<Array<PublisherListDto>> {
         const response = await this.apiPublishersGetRaw(initOverrides);
         return await response.value();
     }

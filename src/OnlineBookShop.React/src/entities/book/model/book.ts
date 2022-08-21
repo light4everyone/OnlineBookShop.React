@@ -1,7 +1,7 @@
 import { createEffect, createEvent, createStore, forward, sample } from 'effector';
 import { useStore } from 'effector-react';
 import { spread } from 'patronum';
-import { BookGridRowDto, booksApi, PagedRequest, BookForUpdateDto } from '../../../shared/api';
+import { BookListDto, booksApi, PagedRequest, BookForUpdateDto } from '../../../shared/api';
 import { history } from '../../../shared/lib/history';
 
 const clearBooksList = createEvent();
@@ -35,7 +35,7 @@ const $sortDirection = createStore<'asc' | 'desc'>('asc')
 	.on(setSortDirection, (_, sortDirection) => sortDirection)
 	.reset(clearBooksList);
 
-const $books = createStore<BookGridRowDto[]>([])
+const $books = createStore<BookListDto[]>([])
 	.reset(clearBooksList);
 
 const $total = createStore<number>(0)

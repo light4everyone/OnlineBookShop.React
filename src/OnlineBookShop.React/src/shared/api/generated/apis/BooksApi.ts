@@ -14,19 +14,17 @@
 
 
 import * as runtime from '../runtime';
-import type {
-  BookDto,
-  BookForUpdateDto,
-  BookListDtoPaginatedResult,
-  PagedRequest,
-} from '../models';
 import {
+    BookDto,
     BookDtoFromJSON,
     BookDtoToJSON,
+    BookForUpdateDto,
     BookForUpdateDtoFromJSON,
     BookForUpdateDtoToJSON,
+    BookListDtoPaginatedResult,
     BookListDtoPaginatedResultFromJSON,
     BookListDtoPaginatedResultToJSON,
+    PagedRequest,
     PagedRequestFromJSON,
     PagedRequestToJSON,
 } from '../models';
@@ -59,7 +57,7 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdDeleteRaw(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async apiBooksIdDeleteRaw(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiBooksIdDelete.');
         }
@@ -88,13 +86,13 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdDelete(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async apiBooksIdDelete(requestParameters: ApiBooksIdDeleteRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
         await this.apiBooksIdDeleteRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiBooksIdGetRaw(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookDto>> {
+    async apiBooksIdGetRaw(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<BookDto>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiBooksIdGet.');
         }
@@ -123,14 +121,14 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdGet(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookDto> {
+    async apiBooksIdGet(requestParameters: ApiBooksIdGetRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<BookDto> {
         const response = await this.apiBooksIdGetRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiBooksIdPutRaw(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async apiBooksIdPutRaw(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
         if (requestParameters.id === null || requestParameters.id === undefined) {
             throw new runtime.RequiredError('id','Required parameter requestParameters.id was null or undefined when calling apiBooksIdPut.');
         }
@@ -162,13 +160,13 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksIdPut(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async apiBooksIdPut(requestParameters: ApiBooksIdPutRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
         await this.apiBooksIdPutRaw(requestParameters, initOverrides);
     }
 
     /**
      */
-    async apiBooksPaginatedSearchPostRaw(requestParameters: ApiBooksPaginatedSearchPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<BookListDtoPaginatedResult>> {
+    async apiBooksPaginatedSearchPostRaw(requestParameters: ApiBooksPaginatedSearchPostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<BookListDtoPaginatedResult>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -196,14 +194,14 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksPaginatedSearchPost(requestParameters: ApiBooksPaginatedSearchPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<BookListDtoPaginatedResult> {
+    async apiBooksPaginatedSearchPost(requestParameters: ApiBooksPaginatedSearchPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<BookListDtoPaginatedResult> {
         const response = await this.apiBooksPaginatedSearchPostRaw(requestParameters, initOverrides);
         return await response.value();
     }
 
     /**
      */
-    async apiBooksPostRaw(requestParameters: ApiBooksPostRequest, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<runtime.ApiResponse<void>> {
+    async apiBooksPostRaw(requestParameters: ApiBooksPostRequest, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<runtime.ApiResponse<void>> {
         const queryParameters: any = {};
 
         const headerParameters: runtime.HTTPHeaders = {};
@@ -231,7 +229,7 @@ export class BooksApi extends runtime.BaseAPI {
 
     /**
      */
-    async apiBooksPost(requestParameters: ApiBooksPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverrideFunction): Promise<void> {
+    async apiBooksPost(requestParameters: ApiBooksPostRequest = {}, initOverrides?: RequestInit | runtime.InitOverideFunction): Promise<void> {
         await this.apiBooksPostRaw(requestParameters, initOverrides);
     }
 

@@ -13,14 +13,14 @@
  */
 
 import { exists, mapValues } from '../runtime';
-import type { Filter } from './Filter';
 import {
+    Filter,
     FilterFromJSON,
     FilterFromJSONTyped,
     FilterToJSON,
 } from './Filter';
-import type { FilterLogicalOperators } from './FilterLogicalOperators';
 import {
+    FilterLogicalOperators,
     FilterLogicalOperatorsFromJSON,
     FilterLogicalOperatorsFromJSONTyped,
     FilterLogicalOperatorsToJSON,
@@ -44,15 +44,6 @@ export interface RequestFilters {
      * @memberof RequestFilters
      */
     filters?: Array<Filter> | null;
-}
-
-/**
- * Check if a given object implements the RequestFilters interface.
- */
-export function instanceOfRequestFilters(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
 }
 
 export function RequestFiltersFromJSON(json: any): RequestFilters {

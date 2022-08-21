@@ -33,15 +33,6 @@ export interface PublisherListDto {
     name?: string | null;
 }
 
-/**
- * Check if a given object implements the PublisherListDto interface.
- */
-export function instanceOfPublisherListDto(value: object): boolean {
-    let isInstance = true;
-
-    return isInstance;
-}
-
 export function PublisherListDtoFromJSON(json: any): PublisherListDto {
     return PublisherListDtoFromJSONTyped(json, false);
 }
